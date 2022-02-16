@@ -1,0 +1,33 @@
+/* Responsive for mobile */
+@media only screen and (max-width: 500px) {
+	header h1 {
+		font-size: 28px;
+	}
+	main .row .left {
+		height: 90vh;
+		border-radius: 6px;
+		margin-bottom: 24px;
+	}
+	main .row .right {
+		padding: 0 16px;
+	}
+	main .row .calculate .row {
+		width: 90%;
+		margin: 0 auto;
+	}
+	main .row .calculate .row .col-5 {
+		padding: 0;
+		padding-right: 3px;
+	}
+	main .row .calculate .row .col-7 input {
+		max-width: 95%;
+	}
+	main .row .calculate .row .saving {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.error {
+		font-size: 8px;
+		font-weight: 700;
+	}
+}

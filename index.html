@@ -24,6 +24,9 @@
 		<!-- Custom Css -->
 		<link rel="stylesheet" href="css/style.css" />
 		<!-- ============================== -->
+        <!-- Responsive Css -->
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- ====================== -->
 	</head>
 	<body>
 		<!-- header Start -->
@@ -41,13 +44,13 @@
 		<!-- ==================== -->
 		<!-- main start -->
 		<main>
-			<section class="container">
-				<div class="row px-lg-5">
-					<div class="col-lg-5 col-sm-12 left p-0 border me-5">
+			<section class="container mb-5">
+				<div class="row px-lg-5 px-3">
+					<div class="col-lg-5 col-sm-12 left p-0 border me-lg-5 me-sm-0 border">
 						<img src="images/money.jpg" alt="money" class="img-fluid" />
 					</div>
-					<div class="col-lg-4 col-sm-12 right border">
-						<div class="calculate py-2 px-5">
+					<div class="col-lg-4 col-sm-12 right p-0 d-flex justify-content-center">
+						<div class="calculate py-lg-2 px-lg-5 px-sm-0 py-2 pb-5">
 							<h3 class="text-center">Income</h3>
 							<div class="row py-1">
 								<div class="col-5">Income:</div>
@@ -83,8 +86,8 @@
 							<h3 class="text-center mb-1 expenditure my-3">
 								Balance <span id="balance">4500</span>
 							</h3>
-							<div class="row my-3 d-flex align-items-center px-4">
-								<div class="col-2">Save:</div>
+							<div class="row my-3 d-flex align-items-center  saving justify-content-center">
+								<div class="col-2 border">Save:&nbsp </div>
 								<div class="col-4">
 									<input type="text" name="save" id="save" class="img-fluid" />
 								</div>
@@ -93,6 +96,7 @@
 									<button class="btn  clickable btn-info" btn-info">Save</button>
 								</div>
 							</div>
+                            <p class="error ps-5">*saving can't exceed income</p>
 							<h3 class="text-center mb-1 expenditure my-3">
 								Saving Amount: <span id="expenses">5500</span>
 							</h3>
