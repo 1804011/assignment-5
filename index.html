@@ -24,9 +24,9 @@
 		<!-- Custom Css -->
 		<link rel="stylesheet" href="css/style.css" />
 		<!-- ============================== -->
-        <!-- Responsive Css -->
-        <link rel="stylesheet" href="css/responsive.css">
-        <!-- ====================== -->
+		<!-- Responsive Css -->
+		<link rel="stylesheet" href="css/responsive.css" />
+		<!-- ====================== -->
 	</head>
 	<body>
 		<!-- header Start -->
@@ -46,17 +46,23 @@
 		<main>
 			<section class="container mb-5">
 				<div class="row px-lg-5 px-3">
-					<div class="col-lg-5 col-sm-12 left p-0 border me-lg-5 me-sm-0 border">
+					<div
+						class="col-lg-5 col-sm-12 left p-0 border me-lg-5 me-sm-0 border"
+					>
 						<img src="images/money.jpg" alt="money" class="img-fluid" />
 					</div>
-					<div class="col-lg-4 col-sm-12 right p-0 d-flex justify-content-center">
+					<div
+						class="col-lg-4 col-sm-12 right p-0 d-flex justify-content-center"
+					>
 						<div class="calculate py-lg-2 px-lg-5 px-sm-0 py-2 pb-5">
 							<h3 class="text-center">Income</h3>
 							<div class="row py-1">
 								<div class="col-5">Income:</div>
 								<div class="col-7">
 									<input type="text" name="income" id="income" />
-									<p class="error">*Income should be a number</p>
+									<p class="error" id="income-error">
+										*Income should be a number
+									</p>
 								</div>
 							</div>
 							<h3 class="text-center mb-2">Expenses</h3>
@@ -64,44 +70,65 @@
 								<div class="col-5">Food:</div>
 								<div class="col-7">
 									<input type="text" name="food" id="food" />
-									<p class="error">*Income should be a number</p>
+									<p class="error" id="food-error">
+										*Income should be a number
+									</p>
 								</div>
 								<div class="col-5">Rent:</div>
 								<div class="col-7">
 									<input type="text" name="rent" id="rent" />
-									<p class="error">*Income should be a number</p>
+									<p class="error" id="rent-error">
+										*Income should be a number
+									</p>
 								</div>
 								<div class="col-5">Clothes:</div>
 								<div class="col-7">
 									<input type="text" name="cloth" id="cloth" />
-									<p class="error">*Income should be a number</p>
+									<p class="error" id="cloth-error">
+										*Income should be a number
+									</p>
 								</div>
 							</div>
+							<p class="error ps-3 ms-5" id="expenses-error">
+								*Expenses Can't exceed income
+							</p>
 							<div class="calculate-btn">
-								<button class="btn  clickable btn-info" btn-info">Calculate</button>
+								<button class="btn clickable btn-info" id="calculate">
+									Calculate
+								</button>
 							</div>
 							<h3 class="text-center mb-1 expenditure my-3">
-								Total Expenses: <span id="expenses">5500</span>
+								Total Expenses: <span id="expenses">0</span>
 							</h3>
+
 							<h3 class="text-center mb-1 expenditure my-3">
-								Balance <span id="balance">4500</span>
+								Balance <span id="balance">0</span>
 							</h3>
-							<div class="row my-3 d-flex align-items-center  saving justify-content-center">
-								<div class="col-2 border">Save:&nbsp </div>
+							<div
+								class="row my-3 d-flex align-items-center saving justify-content-center"
+							>
+								<div class="col-2 border">Save:</div>
 								<div class="col-4">
-									<input type="text" name="save" id="save" class="img-fluid" />
+									<input
+										type="text"
+										name="saving"
+										id="saving"
+										class="img-fluid"
+									/>
 								</div>
 								<div class="col-2">%</div>
 								<div class="col-4">
-									<button class="btn  clickable btn-info" btn-info">Save</button>
+									<button class="btn clickable btn-info" id="save">Save</button>
 								</div>
 							</div>
-                            <p class="error ps-5">*saving can't exceed income</p>
+							<p class="error ps-5" id="saving-error">
+								*saving can't exceed income
+							</p>
 							<h3 class="text-center mb-1 expenditure my-3">
-								Saving Amount: <span id="expenses">5500</span>
+								Saving Amount: <span id="saving-amount">0</span>
 							</h3>
 							<h3 class="text-center mb-1 expenditure my-3">
-								Remaining Balance <span id="balance">4500</span>
+								Remaining Balance <span id="remaining-balance">0</span>
 							</h3>
 						</div>
 					</div>

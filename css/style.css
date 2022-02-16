@@ -8,6 +8,10 @@ body {
 	font-family: "Poppins", sans-serif;
 	font-family: "Roboto", sans-serif;
 }
+input {
+	border-radius: 6px;
+	padding-left: 4px;
+}
 /* header style start */
 header h1 {
 	color: #31a5ac;
