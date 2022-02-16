@@ -2,6 +2,12 @@
 	box-sizing: border-box;
 	margin: 0;
 }
+body {
+	font-family: "Bebas Neue", cursive;
+	font-family: "Lobster", cursive;
+	font-family: "Poppins", sans-serif;
+	font-family: "Roboto", sans-serif;
+}
 /* header style start */
 header h1 {
 	color: #31a5ac;
@@ -9,6 +15,40 @@ header h1 {
 	font-weight: 700;
 }
 /* ======================= */
-/* main section start */
 
+/* main section start */
+main .row .left {
+	height: 600px;
+	max-width: 95vw;
+}
+main .row .left img {
+	height: 100%;
+}
+main .row .right {
+	background-color: #e5e5e5;
+}
+main .row .right .calculate h3 {
+	font-size: 22px;
+	font-weight: 500;
+}
+main .row .right .calculate .row .col-5 {
+	display: flex;
+	justify-content: flex-end;
+}
+.error {
+	color: red;
+	font-size: 10px;
+	font-weight: 600;
+}
+main .row .right .calculate .calculate-btn {
+	display: flex;
+	justify-content: center;
+}
+main .calculate .expenditure {
+	font-size: 16px !important;
+}
+main .calculate .clickable {
+	background-color: #59a5ff !important;
+	color: white;
+}
 /* ================================ */
