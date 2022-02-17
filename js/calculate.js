@@ -1,63 +1,66 @@
-let errorNode = document.getElementsByClassName("error");
-for (const node of errorNode) {
-	node.innerText = "";
-}
 function $(str) {
 	return document.getElementById(str);
 }
-
-function inputValidation(str) {
-	let txt = $(str).value;
-	if (txt.length == 0) {
-		$(str).style.border = "2px solid red";
-		let errorNode = $(`${str}-error`);
-		errorNode.innerText = `*${str} shouldn't be empty`;
-		return false;
-	}
-	for (let i = 1; i < txt.length; i++) {
-		if (txt[i] < "0" || txt[i] > "9") {
-			$(str).style.border = "2px solid red";
-			let errorNode = $(`${str}-error`);
-			errorNode.innerText = `*${str} should be a number`;
-			return false;
-		}
-	}
-	txt = parseInt(txt);
-	if (isNaN(txt)) {
-		$(str).style.border = "2px solid red";
-		let errorNode = $(`${str}-error`);
-		errorNode.innerText = `*${str} should be a number`;
-		return false;
-	} else if (txt < 0) {
-		$(str).style.border = "2px solid red";
-		let errorNode = $(`${str}-error`);
-		errorNode.innerText = `*${str} should be non negative`;
-		return false;
-	}
-	$(str).innerText = "";
-	return txt;
+function errorMessage(str, message) {
+	let errorNodeId = `${str}-error`;
+	let errorNode = $(errorNodeId);
+	errorNode.innerText = `*${str} ` + message;
+	$(str).style.border = "2px solid red";
 }
-$("calculate").onclick = function () {
-	$("balance").innerText = $("expenses").innerText = "0";
-	let incomeInputValue = inputValidation("income");
-	let foodInputValue = inputValidation("food");
-	let rentInputValue = inputValidation("rent");
-	let clothInputValue = inputValidation("cloth");
+function inputValidation(str) {
+	let inputText = $(str).value;
+	let inputLength = inputText.length;
+	let inputValue = parseFloat(inputText);
+	if (inputLength == 0) {
+		errorMessage(str, `shouldn't be empty`);
+		return -1;
+	} else if (isNaN(inputValue)) {
+		errorMessage(str, `should be a number`);
+		return -1;
+	} else if (inputValue < 0) {
+		errorMessage(str, "should be non negative");
+		return -1;
+	}
+	return inputValue;
+}
 
-	if (
-		!incomeInputValue ||
-		!foodInputValue ||
-		!rentInputValue ||
-		!clothInputValue
-	)
+function initialize() {
+	let expenseNode = $("expenses");
+	let balanceNode = $("balance");
+	let savingNode = $("saving-amount");
+	let remainingBalanceNode = $("remaining-balance");
+	expenseNode.innerText =
+		balanceNode.innerText =
+		savingNode.innerText =
+		remainingBalanceNode.innerText =
+			"0";
+	let inputNode = document.getElementsByTagName("input");
+	for (const node of inputNode) {
+		node.style.border = "2px solid black";
+		node.innerText = "";
+	}
+	let errorNode = document.getElementsByClassName("error");
+	for (const node of errorNode) {
+		node.innerText = "";
+	}
+}
+initialize();
+$("calculate").onclick = function () {
+	initialize();
+	let income = inputValidation("income");
+	let foodCost = inputValidation("food");
+	let clothCost = inputValidation("cloth");
+	let rentCost = inputValidation("rent");
+	if (income == -1 || foodCost == -1 || clothCost == -1 || rentCost == -1) {
 		return;
-	let totalExpenses = foodInputValue + rentInputValue + clothInputValue;
-	if (totalExpenses > incomeInputValue) {
-		$("expenses-error").innerText = `Expenses can't exceed income`;
+	}
+	let totalCost = foodCost + clothCost + rentCost;
+
+	if (totalCost > income) {
+		errorMessage("expenses", `shouldn't exceed income`);
 		$("expenses-error").style.fontSize = "12px";
 		return;
 	}
-	$("expenses-error").innerText = "";
-	$("balance").innerText = `${incomeInputValue - totalExpenses}`;
-	$("expenses").innerText = `${totalExpenses}`;
+	$("expenses").innerText = `${totalCost}`;
+	$("balance").innerText = `${income - totalCost}`;
 };
