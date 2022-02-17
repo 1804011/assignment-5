@@ -1,12 +1,18 @@
+// jQuery like function for dom manipulation
 function $(str) {
 	return document.getElementById(str);
 }
+// =====================================
+// errorMessage Function to display error in place & red colored the border
 function errorMessage(str, message) {
 	let errorNodeId = `${str}-error`;
 	let errorNode = $(errorNodeId);
 	errorNode.innerText = `*${str} ` + message;
 	$(str).style.border = "2px solid red";
 }
+// =============================
+//  function to validate user input
+// return -1 if input is not valid &  return input value if succeed
 function inputValidation(str) {
 	let inputText = $(str).value;
 	let inputLength = inputText.length;
@@ -23,7 +29,8 @@ function inputValidation(str) {
 	}
 	return inputValue;
 }
-
+// ========================================
+//Initialize function to hide all error message when document is loaded & make all value zero.
 function initialize() {
 	let expenseNode = $("expenses");
 	let balanceNode = $("balance");
@@ -44,7 +51,10 @@ function initialize() {
 		node.innerText = "";
 	}
 }
+// ==================================================
 initialize();
+//When calculate button is clicked the function is fired & update balance & expenses
+//Also display error message if needed.
 $("calculate").onclick = function () {
 	initialize();
 	let income = inputValidation("income");
@@ -64,6 +74,9 @@ $("calculate").onclick = function () {
 	$("expenses").innerText = `${totalCost}`;
 	$("balance").innerText = `${income - totalCost}`;
 };
+// =========================================================
+//When save function is clicked the function is fired & update saving amount & remaining balance.
+//Also display error message if needed.
 $("save").onclick = function () {
 	$("saving-error").innerText = "";
 	$("saving-amount").innerText = $("remaining-balance").innerText = "0";
@@ -83,3 +96,4 @@ $("save").onclick = function () {
 	$("saving-amount").innerText = `${totalSaving}`;
 	$("remaining-balance").innerText = `${balance - totalSaving}`;
 };
+// =============================================================
