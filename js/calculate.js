@@ -64,3 +64,22 @@ $("calculate").onclick = function () {
 	$("expenses").innerText = `${totalCost}`;
 	$("balance").innerText = `${income - totalCost}`;
 };
+$("save").onclick = function () {
+	$("saving-error").innerText = "";
+	$("saving-amount").innerText = $("remaining-balance").innerText = "0";
+	$("saving").style.border = "2px solid black";
+	let savingValue = inputValidation("saving");
+	if (savingValue == -1) return;
+	let income = inputValidation("income");
+	let totalSaving = (income * savingValue) / 100;
+	let balance = parseFloat($("balance").innerText);
+	console.log(income, totalSaving, balance);
+	if (totalSaving > balance) {
+		$("saving-error").innerText = `*Saving can't exceed balance`;
+		$("saving").style.border = "2px solid red";
+		console.log("yes");
+		return;
+	}
+	$("saving-amount").innerText = `${totalSaving}`;
+	$("remaining-balance").innerText = `${balance - totalSaving}`;
+};
