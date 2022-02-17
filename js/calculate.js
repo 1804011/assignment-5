@@ -8,7 +8,7 @@ function errorMessage(str, message) {
 	let errorNodeId = `${str}-error`;
 	let errorNode = $(errorNodeId);
 	errorNode.innerText = `*${str} ` + message;
-	$(str).style.border = "2px solid red";
+	if (str != "expenses") $(str).style.border = "2px solid red";
 }
 // =============================
 //  function to validate user input
@@ -41,6 +41,7 @@ function initialize() {
 		savingNode.innerText =
 		remainingBalanceNode.innerText =
 			"0";
+	expenseNode.style.border = "none";
 	let inputNode = document.getElementsByTagName("input");
 	for (const node of inputNode) {
 		node.style.border = "2px solid black";
